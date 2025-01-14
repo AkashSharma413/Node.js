@@ -1,4 +1,5 @@
-const add = require('./sum');
+// Every module has it's own scope, same variable won't conflict used in multiple modules, modules code get convert into IIFE expression
+// require("./batman");
+// require("./superman");
 
-console.log("Hello from index.js");
-console.log(add(1,2)); 
+require("./iife");
