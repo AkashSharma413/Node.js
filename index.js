@@ -1,6 +1,5 @@
-// Every module has it's own scope, same variable won't conflict used in multiple modules, modules code get convert into IIFE expression
-const math = require("./math");  
-const {add, subtract} = math;
+const data = require("./data.json");
 
-console.log(add(2, 3)); 
-console.log(subtract(2, 3)); 
+console.log(data.name);
+console.log("Hello Akash Sharma")
+console.log("Welcome to the world of coding!")
