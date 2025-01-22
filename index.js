@@ -1,12 +1,26 @@
-const PizzaShop = require("./pizza-shop");
-const DrinkMachine = require("./drink-machine");
+const fs = require("node:fs");
 
-const pizzaShop = new PizzaShop();
-const drinkMachine = new DrinkMachine();
+console.log("first")
+const fileContent = fs.readFileSync("./file.txt", "utf-8");
+console.log(fileContent);
 
-pizzaShop.on("order", (size, topping) => {
-    console.log(`Pizza ${size} is baking with ${topping}`);
-    drinkMachine.serveDrink(size);
+console.log("second")
+fs.readFile("./file.txt", "utf-8", (error, data) => {
+    if(error){
+        console.log(error);
+    } else {
+        console.log(data);
+    }
+});
+
+console.log("third")
+
+fs.writeFileSync("./greet.txt", "Good morning Akash!");
+
+fs.writeFile("./greet.txt", " Welcome to the coding world", {flag: "a"}, (error) => {
+    if(error){
+        console.log(error);
+    } else {
+        console.log("File written")
+    }
 })
-pizzaShop.order("large", "mushroom");
-pizzaShop.displayOrderNumber();
