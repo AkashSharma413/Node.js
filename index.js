@@ -17,7 +17,9 @@ const crypto = require("node:crypto");
 
 // console.log(`Hash ${Date.now() - start}`);
 
-let MAX_CALL = 3;
+process.env.UV_THREADPOOL_SIZE = 16;
+
+let MAX_CALL = 16;
 
 const start = Date.now();
 for(let i = 0; i < MAX_CALL; i++){
