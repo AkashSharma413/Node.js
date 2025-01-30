@@ -1,26 +1,27 @@
-const http = require("node:http");
+// const fs = require("node:fs");
 
-const server = http.createServer((req, res) => {
-  if (req.url === "/") {
-    res.writeHead(200, { "content-type": "text/plain" });
-    res.end("Home page");
-  } else if (req.url === "/about") {
-    res.writeHead(200, { "content-type": "text/plain" });
-    res.end("About page");
-  } else if (req.url === "/api") {
-    res.writeHead(200, { "content-type": "application/json" });
-    res.end(
-      JSON.stringify({
-        firstName: "Akash",
-        lastName: "Sharma",
-      })
-    );
-  } else {
-    res.writeHead(404);
-    res.end("Page not found!");
-  }
-});
+// console.log("first");
 
-server.listen(3000, () => {
-  console.log("Server is listening on port 3000");
-});
+// fs.readFile("./file.txt", "utf-8", (err, data) => {
+//   console.log("File Contents");
+// });
+
+// console.log("second");
+
+const crypto = require("node:crypto");
+
+// const start = Date.now();
+// crypto.pbkdf2Sync("password", "salt", 100000, 512, "sha512");
+// crypto.pbkdf2Sync("password", "salt", 100000, 512, "sha512");
+// crypto.pbkdf2Sync("password", "salt", 100000, 512, "sha512");
+
+// console.log(`Hash ${Date.now() - start}`);
+
+let MAX_CALL = 3;
+
+const start = Date.now();
+for(let i = 0; i < MAX_CALL; i++){
+  crypto.pbkdf2("password", "salt", 100000, 512, "sha512", () => {
+    console.log(`Hash - ${i + 1} ${Date.now() - start}`);
+  })
+}
