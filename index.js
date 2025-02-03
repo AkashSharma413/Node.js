@@ -1,14 +1,24 @@
-const https = require("node:https");
+// console.log("This is log 1");
+// process.nextTick(()=> console.log("This is log 2"));
+// console.log("This is log 3");
 
-let MAX_CALL = 16;
+// console.log("This is log 1");
+// Promise.resolve().then(() => console.log("This is log 2"));
+// console.log("This is log 3");
 
-const start = Date.now();
-for(let i = 0; i < MAX_CALL; i++){
-  https.request("https://www.google.com/", (res) => {
-    res.on("data", () => {})
-    res.on("end", () => {
-      console.log(`Request - ${i + 1}`, Date.now() - start);
-    })
-  })
-  .end();
-}
+process.nextTick(() => console.log("This is log 1"))
+process.nextTick(() => {
+  console.log("This is log 2")
+  process.nextTick(() => console.log("This is log from inner next tick block"))
+})
+process.nextTick(() => console.log("This is log 3"))
+
+Promise.resolve().then(() => console.log("This is promise log 1"))
+Promise.resolve().then(() => {
+  console.log("This is promise log 2")
+  Promise.resolve().then(() => console.log("This is promise log from inner promise block"))
+})
+Promise.resolve().then(() => console.log("This is promise log 3"))
+
+
+
