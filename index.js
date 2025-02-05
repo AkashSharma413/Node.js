@@ -7,3 +7,4 @@ fs.readFile(__filename, () => {
 process.nextTick(() => console.log("this is nextTick 1")); // microtask queue/nextTick queue
 Promise.resolve().then(() => console.log("this is resolve 1")); // microtask queue/promise queue
 setTimeout(() => console.log("this is setTimeOut 1"), 0); // timer queue
+setImmediate(() => console.log("this is setImmediate 1")) // check queues
