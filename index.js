@@ -1,36 +1,9 @@
-// console.log("This is log 1");
-// process.nextTick(()=> console.log("This is log 2"));
-// console.log("This is log 3");
+const fs = require("node:fs");
 
-// console.log("This is log 1");
-// Promise.resolve().then(() => console.log("This is log 2"));
-// console.log("This is log 3");
+fs.readFile(__filename, () => {
+    console.log("this is read file 1");
+}) // I/O queue
 
-// setTimeout(() => console.log("This is setTimeOut log 1"), 0)
-// setTimeout(() => {
-//   console.log("This is setTimeOut log 2")
-//   process.nextTick(() => console.log("This is nextTick from setTimeOut"))
-// }, 0)
-// setTimeout(() => console.log("This is setTimeOut log 3"), 0)
-
-// process.nextTick(() => console.log("This is log 1"))
-// process.nextTick(() => {
-//   console.log("This is log 2")
-//   process.nextTick(() => console.log("This is log from inner next tick block"))
-// })
-// process.nextTick(() => console.log("This is log 3"))
-
-// Promise.resolve().then(() => console.log("This is promise log 1"))
-// Promise.resolve().then(() => {
-//   console.log("This is promise log 2")
-//   Promise.resolve().then(() => console.log("This is promise log from inner promise block"))
-// })
-// Promise.resolve().then(() => console.log("This is promise log 3"))
-
-// Timer queue execute in FIFO order 
-setTimeout(() => console.log("This is log statement 1"), 1000)
-setTimeout(() => console.log("This is log statement 2"), 500)
-setTimeout(() => console.log("This is log statement 3"), 0)
-
-
-
+process.nextTick(() => console.log("this is nextTick 1")); // microtask queue/nextTick queue
+Promise.resolve().then(() => console.log("this is resolve 1")); // microtask queue/promise queue
+setTimeout(() => console.log("this is setTimeOut 1"), 0); // timer queue
