@@ -1,0 +1,16 @@
+node_modules/
+.DS_Store
+.env
+.next/
+.parcel-cache/
+.vercel/
+.netlify/
+.yarn/
+.pnp.*
+dist/
+build/
+coverage/
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
