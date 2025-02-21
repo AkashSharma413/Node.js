@@ -1,14 +1,14 @@
 {
-  "name": "akki-first-package",
+  "name": "new-package",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "swap-case": "^3.0.3"
+    "akki-first-package": "^1.0.0"
   }
 }
