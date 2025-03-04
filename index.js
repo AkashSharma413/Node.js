@@ -1,11 +1,12 @@
-const fs = require("node:fs")
+const http = require("node:http");
 
-const readableStream = fs.createReadStream(__filename)
-readableStream.close()
+const server = http.createServer((req, res) => {
+    if (req.url === "/") {
+        res.writeHead(200, {"content-type": "text/plain"});
+        res.end("Hello World");
+    }
+})
 
-readableStream.on("close", () => console.log("this is from readableStream close callback"))
+const PORT = process.env.PORT || 3000;
 
-setImmediate(() => console.log("this is setImmediate"))
-setTimeout(() => console.log("this is setTimeOut"))
-Promise.resolve().then(() => console.log("this is promise.resole"))
-process.nextTick(() => console.log("this is nextTick"))
+server.listen(PORT, () => console.log(`Server is listening on port ${PORT}`));
